@@ -61,56 +61,99 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <title>Register As Student</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
         .navbar {
-            background-color: #1a73e8;
-            padding: 1rem;
-            color: white;
-        }
-        .container {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #1a73e8;
-            border-radius: 10px;
-            color: white;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-row {
+            background: linear-gradient(180deg, #1a73e8 0%, #0d47a1 100%);
+            padding: 1rem 2rem;
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            justify-content: space-between;
+            align-items: center;
         }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: slideUp 0.5s ease;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
         input, select {
             width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 10px;
+            border: 2px solid #e1e1e1;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
         }
+
+        input:focus, select:focus {
+            border-color: #1a73e8;
+            outline: none;
+        }
+
         .btn {
-            background-color: white;
-            color: #1a73e8;
-            padding: 0.5rem 2rem;
+            background: linear-gradient(45deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 12px 30px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         .error {
-            color: #ff4444;
-            background-color: white;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border-radius: 4px;
+            background: #ffe3e3;
+            color: #d63031;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
