@@ -9,6 +9,38 @@ try {
     );
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    
+    function initializeCategories($pdo) {
+      
+        $stmt = $pdo->query("SELECT COUNT(*) FROM item_categories");
+        $count = $stmt->fetchColumn();
+
+        if ($count == 0) {
+           
+            $categories = [
+                'Phone',
+                'Accessories',
+                'Tumbler',
+                'Laptop',
+                'Umbrella',
+                'ID',
+                'Others'
+            ];
+
+         
+            $stmt = $pdo->prepare("INSERT INTO item_categories (name) VALUES (:name)");
+
+          
+            foreach ($categories as $category) {
+                $stmt->execute(['name' => $category]);
+            }
+        }
+    }
+
+    // Call the initialization function
+    initializeCategories($pdo);
+
 } catch(PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }

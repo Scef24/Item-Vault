@@ -324,7 +324,7 @@ $lost_items = $stmt->fetchAll();
                         <p>Posted by: <?php echo htmlspecialchars($item['username']); ?></p>
                         
                         <?php if (!empty($item['location_found'])): ?>
-                            <p>Location: <?php echo htmlspecialchars($item['location_found']); ?></p>
+                            <p>Location: <?php echo htmlspecialchars($item['location_found'] ?? ''); ?></p>
                         <?php endif; ?>
                         
                         <?php if (!empty($item['date_item'])): ?>
